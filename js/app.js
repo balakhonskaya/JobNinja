@@ -25,8 +25,8 @@ window.addEventListener('scroll', (ev) => {
 function validateForm() {
     var name = document.forms["myForm"]["name"].value;
     var email = document.forms["myForm"]["email"].value;
-    var subject = document.forms["myForm"]["subject"].value;
-    var comments = document.forms["myForm"]["comments"].value;
+    var company = document.forms["myForm"]["company"].value;
+    var phone = document.forms["myForm"]["phone"].value;
     document.getElementById("error-msg").style.opacity = 0;
     document.getElementById('error-msg').innerHTML = "";
     if (name == "" || name == null) {
@@ -39,30 +39,17 @@ function validateForm() {
         fadeIn();
         return false;
     }
-    if (subject == "" || subject == null) {
+    if (company == "" || company == null) {
         document.getElementById('error-msg').innerHTML = "<div class='alert alert-warning error_message'>Bitte geben Sie Ihre Firme ein</div>";
         fadeIn();
         return false;
     }
-    if (comments == "" || comments == null) {
+    if (phone == "" || phone == null) {
         document.getElementById('error-msg').innerHTML = "<div class='alert alert-warning error_message'>Bitte geben Sie Ihr Telefon ein</div>";
         fadeIn();
         return false;
     }
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("simple-msg").innerHTML = this.responseText;
-            document.forms["myForm"]["name"].value = "";
-            document.forms["myForm"]["email"].value = "";
-            document.forms["myForm"]["subject"].value = "";
-            document.forms["myForm"]["comments"].value = "";
-        }
-    };
-    xhttp.open("POST", "php/contact.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("name=" + name + "&email=" + email + "&subject=" + subject + "&comments=" + comments);
-    return false;
+
 }
 
 function fadeIn() {
